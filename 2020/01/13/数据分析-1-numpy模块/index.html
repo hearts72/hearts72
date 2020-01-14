@@ -10,16 +10,16 @@
 <title>Numpy模块 - 有理想的</title>
 
 
-    <meta name="description" content="什么是数据分析 是把隐藏在一些看似杂乱无章的数据背后的信息提炼出来，总结出所研究对象的内在规律 数据分析是用适当的方法对收集来的大量数据进行分析，帮助人们做出判断，以便采取适当的行动 商品采购量的多少 总部向各个地区代理的发货量 ……    数据分析实现流程 提出问题 准备数据 分析数据 获得结论 成果可视化  数据分析三剑客 numpy pandas matplotlib  numpy模块：一维">
+    <meta name="description" content="什么是数据分析 是把隐藏在一些看似杂乱无章的数据背后的信息提炼出来，总结出所研究对象的内在规律 数据分析是用适当的方法对收集来的大量数据进行分析，帮助人们做出判断，以便采取适当的行动 商品采购量的多少 总部向各个地区代理的发货量 ……">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Numpy模块">
 <meta property="og:url" content="https://hearts72.github.io/2020/01/13/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-1-numpy%E6%A8%A1%E5%9D%97/index.html">
 <meta property="og:site_name" content="有理想的">
-<meta property="og:description" content="什么是数据分析 是把隐藏在一些看似杂乱无章的数据背后的信息提炼出来，总结出所研究对象的内在规律 数据分析是用适当的方法对收集来的大量数据进行分析，帮助人们做出判断，以便采取适当的行动 商品采购量的多少 总部向各个地区代理的发货量 ……    数据分析实现流程 提出问题 准备数据 分析数据 获得结论 成果可视化  数据分析三剑客 numpy pandas matplotlib  numpy模块：一维">
+<meta property="og:description" content="什么是数据分析 是把隐藏在一些看似杂乱无章的数据背后的信息提炼出来，总结出所研究对象的内在规律 数据分析是用适当的方法对收集来的大量数据进行分析，帮助人们做出判断，以便采取适当的行动 商品采购量的多少 总部向各个地区代理的发货量 ……">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hearts72.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-01-13T13:31:03.000Z">
-<meta property="article:modified_time" content="2020-01-14T13:33:35.438Z">
+<meta property="article:modified_time" content="2020-01-14T13:43:38.904Z">
 <meta property="article:author" content="有理想">
 <meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1874 个字)
+                    13 分钟 读完 (大约 1922 个字)
                 </span>
                 
                 
@@ -176,6 +176,8 @@
 </ul>
 </li>
 </ul>
+<a id="more"></a>
+
 <h3 id="数据分析实现流程"><a href="#数据分析实现流程" class="headerlink" title="数据分析实现流程"></a>数据分析实现流程</h3><ul>
 <li>提出问题</li>
 <li>准备数据</li>
@@ -234,18 +236,18 @@
 <pre><code>array([1. , 2.2, 3. , 4. , 5. , 6. ])</code></pre><ul>
 <li>将外部的一张图片读取加载到numpy数组中，然后尝试改变数组元素的数值查看对原始图片的影响</li>
 </ul>
-<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line">img_arr = plt.imread(<span class="hljs-string">'./assets/1.jpg'</span>)</span><br><span class="line">plt.imshow(img_arr)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br><span class="line">img_arr = plt.imread(<span class="hljs-string">'/1.jpg'</span>)</span><br><span class="line">plt.imshow(img_arr)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f45aabb38&gt;</code></pre><p><img src="output_12_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f45aabb38&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_12_1.png" alt="png"></p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(img_arr<span class="hljs-number">-100</span>)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f58c189b0&gt;</code></pre><p><img src="output_13_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f58c189b0&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_13_1.png" alt="png"></p>
 <ul>
 <li>zeros()</li>
 <li>ones()</li>
@@ -389,7 +391,7 @@
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f58c84cf8&gt;</code></pre><p><img src="output_37_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f58c84cf8&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_37_1.png" alt="png"></p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img_arr.shape <span class="hljs-comment">#前两个维度表示的是像素，最后一个维度表示颜色</span></span><br></pre></td></tr></table></figure>
 
 
@@ -400,31 +402,31 @@
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f58cebb38&gt;</code></pre><p><img src="output_39_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f58cebb38&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_39_1.png" alt="png"></p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(img_arr[:,::<span class="hljs-number">-1</span>,:])</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59d21908&gt;</code></pre><p><img src="output_40_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59d21908&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_40_1.png" alt="png"></p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(img_arr[::<span class="hljs-number">-1</span>,::<span class="hljs-number">-1</span>,::<span class="hljs-number">-1</span>])</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59d88518&gt;</code></pre><p><img src="output_41_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59d88518&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_41_1.png" alt="png"></p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#裁剪</span></span><br><span class="line">plt.imshow(img_arr)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59df3080&gt;</code></pre><p><img src="output_42_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59df3080&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_42_1.png" alt="png"></p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(img_arr[<span class="hljs-number">150</span>:<span class="hljs-number">400</span>,<span class="hljs-number">100</span>:<span class="hljs-number">30</span>,:])</span><br></pre></td></tr></table></figure>
 
 
 
 
-<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59eac438&gt;</code></pre><p><img src="output_43_1.png" alt="png"></p>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x27f59eac438&gt;</code></pre><p><img src="https://hearts72.github.io/img/article/output_43_1.png" alt="png"></p>
 <ul>
 <li>切片汇总：<ul>
 <li>切行：arr[index1:index3]</li>
