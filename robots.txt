@@ -12,6 +12,6 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: http://lansus.coding.me/sitemap.xml
-Sitemap: http://lansus.coding.me/baidusitemap.xml
+Sitemap: http://hearts72.github.io/sitemap.xml
+Sitemap: http://hearts72.github.io/baidusitemap.xml
 
