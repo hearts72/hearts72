@@ -7,22 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>django模版与过滤器 - 孙永超</title>
+<title>双均线策略 - 孙永超</title>
 
 
-    <meta name="description" content="12345678910111213141516171819202122&lt;div class&#x3D;&quot;cart&quot;&gt;    &lt;Header&#x2F;&gt;    &lt;div class&#x3D;&quot;cart-info&quot;&gt;        &lt;h3 class&#x3D;&quot;cart-top&quot;&gt;购物车结算 &lt;span&gt;共&amp;#123;&amp;#123;course_list.length&amp;#125">
+    <meta name="description" content="需求：双均线策略制定 使用tushare包获取某股票的历史行情数据  计算该股票历史数据的5日均线和30日均线  什么是均线？ 对于每一个交易日，都可以计算出前N天的移动平均值，然后把这些移动平均值连起来，成为一条线，就叫做N日移动平均线。移动平均线常用线有5天、10天、30天、60天、120天和240天的指标。 5天和10天的是短线操作的参照指标，称做日均线指标； 30天和60天的是中期均线指标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="django模版与过滤器">
-<meta property="og:url" content="https://hearts72.github.io/2019/07/09/aa/index.html">
+<meta property="og:title" content="双均线策略">
+<meta property="og:url" content="https://hearts72.github.io/2020/01/11/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E5%8F%8C%E5%9D%87%E7%BA%BF%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="孙永超">
-<meta property="og:description" content="12345678910111213141516171819202122&lt;div class&#x3D;&quot;cart&quot;&gt;    &lt;Header&#x2F;&gt;    &lt;div class&#x3D;&quot;cart-info&quot;&gt;        &lt;h3 class&#x3D;&quot;cart-top&quot;&gt;购物车结算 &lt;span&gt;共&amp;#123;&amp;#123;course_list.length&amp;#125">
+<meta property="og:description" content="需求：双均线策略制定 使用tushare包获取某股票的历史行情数据  计算该股票历史数据的5日均线和30日均线  什么是均线？ 对于每一个交易日，都可以计算出前N天的移动平均值，然后把这些移动平均值连起来，成为一条线，就叫做N日移动平均线。移动平均线常用线有5天、10天、30天、60天、120天和240天的指标。 5天和10天的是短线操作的参照指标，称做日均线指标； 30天和60天的是中期均线指标">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hearts72.github.io/images/og_image.png">
-<meta property="article:published_time" content="2019-07-08T16:31:03.000Z">
-<meta property="article:modified_time" content="2020-01-04T06:09:35.841Z">
+<meta property="article:published_time" content="2020-01-11T03:02:10.000Z">
+<meta property="article:modified_time" content="2020-01-16T08:49:43.603Z">
 <meta property="article:author" content="孙永超">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="Django">
+<meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://hearts72.github.io/images/og_image.png">
 
@@ -30,7 +29,7 @@
 
 
 
-<link rel="alternative" href="atom.xml" title="django模版与过滤器" type="application/atom+xml">
+<link rel="alternative" href="atom.xml" title="双均线策略" type="application/atom+xml">
 
 
 
@@ -92,7 +91,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/img/myLOGO.png" alt="django模版与过滤器" height="28">
+                <img src="/img/myLOGO.png" alt="双均线策略" height="28">
             
             </a>
         </div>
@@ -142,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-08T16:31:03.000Z">2019-07-09</time>
+                <time class="level-item has-text-grey" datetime="2020-01-11T03:02:10.000Z">2020-01-11</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Python/">Python</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Python/Django/">Django</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 38 个字)
+                    7 分钟 读完 (大约 1001 个字)
                 </span>
                 
                 
@@ -161,20 +160,466 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                django模版与过滤器
+                双均线策略
             
         </h1>
         <div class="content">
-            <figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="cart"&gt;</span><br><span class="line">    &lt;Header/&gt;</span><br><span class="line">    &lt;div class="cart-info"&gt;</span><br><span class="line">        &lt;h3 class="cart-top"&gt;购物车结算 &lt;span&gt;共&#123;&#123;course_list.length&#125;&#125;门课程&lt;/span&gt;&lt;/h3&gt;</span><br><span class="line">        &lt;div class="cart-title"&gt;</span><br><span class="line">           &lt;el-row&gt;</span><br><span class="line">             &lt;el-col :span="2"&gt;&amp;nbsp;&lt;/el-col&gt;</span><br><span class="line">             &lt;el-col :span="10"&gt;课程&lt;/el-col&gt;</span><br><span class="line">             &lt;el-col :span="8"&gt;有效期&lt;/el-col&gt;</span><br><span class="line">             &lt;el-col :span="4"&gt;价格&lt;/el-col&gt;</span><br><span class="line">           &lt;/el-row&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class="cart-item"&gt;</span><br><span class="line">          &lt;el-row :key=<span class="hljs-string">"key"</span> v-<span class="hljs-keyword">for</span>=<span class="hljs-string">"course,key in course_list"</span>&gt;</span><br><span class="line">             &lt;el-col :span="2" class="checkbox"&gt;&amp;nbsp;&amp;nbsp;&lt;/el-col&gt;</span><br><span class="line">             &lt;el-col :span="10" class="course-info"&gt;</span><br><span class="line">               &lt;img :src=<span class="hljs-string">"$settings.Host+course.course_img"</span> alt=<span class="hljs-string">""</span>&gt;</span><br><span class="line">               &lt;span class="course-title"&gt;&#123;&#123;course.name&#125;&#125;&lt;br&gt;&#123;&#123;course.discount_name&#125;&#125;&lt;/span&gt;</span><br><span class="line">             &lt;/el-col&gt;</span><br><span class="line">             &lt;el-col :span="8"&gt;&lt;span&gt;&#123;&#123;course.expire&#125;&#125;&lt;/span&gt;&lt;/el-col&gt;</span><br><span class="line">             &lt;el-col :span="4" class="course-price"&gt;¥&#123;&#123;course.discount_price&#125;&#125;&lt;br&gt;&lt;span&gt;原价 ¥&#123;&#123;course.price.toFixed(2)&#125;&#125;&lt;/span&gt;&lt;/el-col&gt;</span><br><span class="line">           &lt;/el-row&gt;</span><br></pre></td></tr></table></figure>
+            <h3 id="需求：双均线策略制定"><a href="#需求：双均线策略制定" class="headerlink" title="需求：双均线策略制定"></a>需求：双均线策略制定</h3><ul>
+<li><p>使用tushare包获取某股票的历史行情数据</p>
+</li>
+<li><p>计算该股票历史数据的5日均线和30日均线</p>
+<ul>
+<li>什么是均线？<ul>
+<li>对于每一个交易日，都可以计算出前N天的移动平均值，然后把这些移动平均值连起来，成为一条线，就叫做N日移动平均线。移动平均线常用线有5天、10天、30天、60天、120天和240天的指标。<ul>
+<li>5天和10天的是短线操作的参照指标，称做日均线指标；</li>
+<li>30天和60天的是中期均线指标，称做季均线指标；</li>
+<li>120天和240天的是长期均线指标，称做年均线指标。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>均线计算方法：MA=（C1+C2+C3+…+Cn)/N C:某日收盘价 N:移动平均周期（天数）</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
 
 
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np</span><br><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line"><span class="hljs-keyword">from</span> pandas <span class="hljs-keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="hljs-keyword">import</span> tushare <span class="hljs-keyword">as</span> ts<span class="hljs-comment">#财经数据接口包</span></span><br><span class="line"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = ts.get_k_data(<span class="hljs-string">'600519'</span>,start=<span class="hljs-string">'2000-01-01'</span>)</span><br><span class="line">df.to_csv(<span class="hljs-string">'./maotai.csv'</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="hljs-string">'./maotai.csv'</span>)</span><br><span class="line">df.drop(labels=<span class="hljs-string">'Unnamed: 0'</span>,axis=<span class="hljs-number">1</span>,inplace=<span class="hljs-literal">True</span>)</span><br><span class="line"><span class="hljs-comment">#将date列的数据转成时间序列且将其作为源数据的行索引</span></span><br><span class="line">df[<span class="hljs-string">'date'</span>] = pd.to_datetime(df[<span class="hljs-string">'date'</span>])</span><br><span class="line">df.set_index(<span class="hljs-string">'date'</span>,inplace=<span class="hljs-literal">True</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2001-08-27</td>
+<td>5.392</td>
+<td>5.554</td>
+<td>5.902</td>
+<td>5.132</td>
+<td>406318.00</td>
+<td>600519</td>
+</tr>
+<tr>
+<td>2001-08-28</td>
+<td>5.467</td>
+<td>5.759</td>
+<td>5.781</td>
+<td>5.407</td>
+<td>129647.79</td>
+<td>600519</td>
+</tr>
+<tr>
+<td>2001-08-29</td>
+<td>5.777</td>
+<td>5.684</td>
+<td>5.781</td>
+<td>5.640</td>
+<td>53252.75</td>
+<td>600519</td>
+</tr>
+<tr>
+<td>2001-08-30</td>
+<td>5.668</td>
+<td>5.796</td>
+<td>5.860</td>
+<td>5.624</td>
+<td>48013.06</td>
+<td>600519</td>
+</tr>
+<tr>
+<td>2001-08-31</td>
+<td>5.804</td>
+<td>5.782</td>
+<td>5.877</td>
+<td>5.749</td>
+<td>23231.48</td>
+<td>600519</td>
+</tr>
+</tbody></table>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#ma表示的是均线</span></span><br><span class="line">ma5 = df[<span class="hljs-string">'close'</span>].rolling(<span class="hljs-number">5</span>).mean()</span><br><span class="line">ma30 = df[<span class="hljs-string">'close'</span>].rolling(<span class="hljs-number">30</span>).mean()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#将ma5和ma30汇总到源数据中</span></span><br><span class="line">df[<span class="hljs-string">'ma5'</span>] = ma5</span><br><span class="line">df[<span class="hljs-string">'ma30'</span>] = ma30</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>code</th>
+<th>ma5</th>
+<th>ma30</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2001-08-27</td>
+<td>5.392</td>
+<td>5.554</td>
+<td>5.902</td>
+<td>5.132</td>
+<td>406318.00</td>
+<td>600519</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2001-08-28</td>
+<td>5.467</td>
+<td>5.759</td>
+<td>5.781</td>
+<td>5.407</td>
+<td>129647.79</td>
+<td>600519</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2001-08-29</td>
+<td>5.777</td>
+<td>5.684</td>
+<td>5.781</td>
+<td>5.640</td>
+<td>53252.75</td>
+<td>600519</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2001-08-30</td>
+<td>5.668</td>
+<td>5.796</td>
+<td>5.860</td>
+<td>5.624</td>
+<td>48013.06</td>
+<td>600519</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2001-08-31</td>
+<td>5.804</td>
+<td>5.782</td>
+<td>5.877</td>
+<td>5.749</td>
+<td>23231.48</td>
+<td>600519</td>
+<td>5.715</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2020-01-09</td>
+<td>1094.000</td>
+<td>1102.700</td>
+<td>1105.390</td>
+<td>1090.000</td>
+<td>37405.00</td>
+<td>600519</td>
+<td>1088.384</td>
+<td>1140.647667</td>
+</tr>
+<tr>
+<td>2020-01-10</td>
+<td>1109.000</td>
+<td>1112.500</td>
+<td>1115.990</td>
+<td>1102.500</td>
+<td>35975.00</td>
+<td>600519</td>
+<td>1095.172</td>
+<td>1138.537667</td>
+</tr>
+<tr>
+<td>2020-01-13</td>
+<td>1112.500</td>
+<td>1124.270</td>
+<td>1129.200</td>
+<td>1112.000</td>
+<td>38515.00</td>
+<td>600519</td>
+<td>1104.428</td>
+<td>1138.380000</td>
+</tr>
+<tr>
+<td>2020-01-14</td>
+<td>1124.200</td>
+<td>1107.400</td>
+<td>1124.890</td>
+<td>1103.000</td>
+<td>35144.00</td>
+<td>600519</td>
+<td>1107.002</td>
+<td>1137.526667</td>
+</tr>
+<tr>
+<td>2020-01-15</td>
+<td>1109.010</td>
+<td>1112.130</td>
+<td>1121.600</td>
+<td>1105.000</td>
+<td>26029.00</td>
+<td>600519</td>
+<td>1111.800</td>
+<td>1137.331000</td>
+</tr>
+</tbody></table>
+<ul>
+<li>可视化历史数据的收盘价和两条均线</li>
+</ul>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(ma5[<span class="hljs-number">50</span>:<span class="hljs-number">100</span>],c=<span class="hljs-string">'red'</span>)</span><br><span class="line">plt.plot(ma30[<span class="hljs-number">50</span>:<span class="hljs-number">100</span>],c=<span class="hljs-string">'blue'</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x1fc5d722710&gt;]</code></pre><p><img src="https://hearts72.github.io/img/article/output_9_2.png" alt="png"></p>
+<ul>
+<li><p>分析输出所有金叉日期和死叉日期</p>
+<ul>
+<li>股票分析技术中的金叉和死叉，可以简单解释为：<ul>
+<li>分析指标中的两根线，一根为短时间内的指标线，另一根为较长时间的指标线。</li>
+<li>如果短时间的指标线方向拐头向上，并且穿过了较长时间的指标线，这种状态叫“金叉”；</li>
+<li>如果短时间的指标线方向拐头向下，并且穿过了较长时间的指标线，这种状态叫“死叉”；</li>
+<li>一般情况下，出现金叉后，操作趋向买入；死叉则趋向卖出。当然，金叉和死叉只是分析指标之一，要和其他很多指标配合使用，才能增加操作的准确性。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果我从假如我从2010年1月1日开始，初始资金为100000元，金叉尽量买入，死叉全部卖出，则到今天为止，我的炒股收益率如何？</p>
+</li>
+</ul>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = df[<span class="hljs-string">'2010'</span>:<span class="hljs-string">'2020'</span>]</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>open</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>volume</th>
+<th>code</th>
+<th>ma5</th>
+<th>ma30</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>date</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2010-01-04</td>
+<td>109.760</td>
+<td>108.446</td>
+<td>109.760</td>
+<td>108.044</td>
+<td>44304.88</td>
+<td>600519</td>
+<td>108.5402</td>
+<td>109.306267</td>
+</tr>
+<tr>
+<td>2010-01-05</td>
+<td>109.116</td>
+<td>108.127</td>
+<td>109.441</td>
+<td>107.846</td>
+<td>31513.18</td>
+<td>600519</td>
+<td>108.4178</td>
+<td>109.256500</td>
+</tr>
+<tr>
+<td>2010-01-06</td>
+<td>107.840</td>
+<td>106.417</td>
+<td>108.165</td>
+<td>106.129</td>
+<td>39889.03</td>
+<td>600519</td>
+<td>107.8512</td>
+<td>109.191000</td>
+</tr>
+<tr>
+<td>2010-01-07</td>
+<td>106.417</td>
+<td>104.477</td>
+<td>106.691</td>
+<td>103.302</td>
+<td>48825.55</td>
+<td>600519</td>
+<td>107.1672</td>
+<td>108.971067</td>
+</tr>
+<tr>
+<td>2010-01-08</td>
+<td>104.655</td>
+<td>103.379</td>
+<td>104.655</td>
+<td>102.167</td>
+<td>36702.09</td>
+<td>600519</td>
+<td>106.1692</td>
+<td>108.833000</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2020-01-09</td>
+<td>1094.000</td>
+<td>1102.700</td>
+<td>1105.390</td>
+<td>1090.000</td>
+<td>37405.00</td>
+<td>600519</td>
+<td>1088.3840</td>
+<td>1140.647667</td>
+</tr>
+<tr>
+<td>2020-01-10</td>
+<td>1109.000</td>
+<td>1112.500</td>
+<td>1115.990</td>
+<td>1102.500</td>
+<td>35975.00</td>
+<td>600519</td>
+<td>1095.1720</td>
+<td>1138.537667</td>
+</tr>
+<tr>
+<td>2020-01-13</td>
+<td>1112.500</td>
+<td>1124.270</td>
+<td>1129.200</td>
+<td>1112.000</td>
+<td>38515.00</td>
+<td>600519</td>
+<td>1104.4280</td>
+<td>1138.380000</td>
+</tr>
+<tr>
+<td>2020-01-14</td>
+<td>1124.200</td>
+<td>1107.400</td>
+<td>1124.890</td>
+<td>1103.000</td>
+<td>35144.00</td>
+<td>600519</td>
+<td>1107.0020</td>
+<td>1137.526667</td>
+</tr>
+<tr>
+<td>2020-01-15</td>
+<td>1109.010</td>
+<td>1112.130</td>
+<td>1121.600</td>
+<td>1105.000</td>
+<td>26029.00</td>
+<td>600519</td>
+<td>1111.8000</td>
+<td>1137.331000</td>
+</tr>
+</tbody></table>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sr1 = df[<span class="hljs-string">'ma5'</span>] &lt; df[<span class="hljs-string">'ma30'</span>]</span><br><span class="line">sr2 = df[<span class="hljs-string">'ma5'</span>] &gt;= df[<span class="hljs-string">'ma30'</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>让sr1和sr2.shift(1)进行与操作或者或操作，返回的结果定位到金叉和死叉</li>
+</ul>
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.loc[sr1 &amp; sr2.shift(<span class="hljs-number">1</span>)] <span class="hljs-comment">#死叉对应的行数据</span></span><br><span class="line">death_dates = df.loc[sr1 &amp; sr2.shift(<span class="hljs-number">1</span>)].index</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.loc[~(sr1 | sr2.shift(<span class="hljs-number">1</span>))]<span class="hljs-comment">#金叉对应的行数据</span></span><br><span class="line">golden_dates = df.loc[~(sr1 | sr2.shift(<span class="hljs-number">1</span>))].index</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">golden_dates</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>DatetimeIndex([&apos;2010-01-20&apos;, &apos;2010-02-03&apos;, &apos;2010-06-04&apos;, &apos;2010-07-19&apos;,
+               &apos;2010-10-22&apos;, &apos;2010-11-10&apos;, &apos;2011-02-11&apos;, &apos;2011-03-14&apos;,
+               &apos;2011-04-28&apos;, &apos;2011-10-25&apos;, &apos;2012-02-10&apos;, &apos;2012-07-25&apos;,
+               &apos;2012-08-09&apos;, &apos;2012-09-12&apos;, &apos;2012-09-27&apos;, &apos;2012-12-21&apos;,
+               &apos;2013-01-10&apos;, &apos;2013-03-12&apos;, &apos;2013-04-17&apos;, &apos;2013-07-03&apos;,
+               &apos;2013-10-22&apos;, &apos;2013-11-11&apos;, &apos;2013-11-28&apos;, &apos;2014-01-23&apos;,
+               &apos;2014-04-03&apos;, &apos;2014-06-23&apos;, &apos;2014-09-04&apos;, &apos;2014-09-29&apos;,
+               &apos;2014-11-20&apos;, &apos;2014-11-28&apos;, &apos;2015-02-13&apos;, &apos;2015-07-15&apos;,
+               &apos;2015-09-16&apos;, &apos;2015-10-09&apos;, &apos;2015-12-03&apos;, &apos;2015-12-21&apos;,
+               &apos;2016-02-22&apos;, &apos;2016-08-11&apos;, &apos;2016-10-13&apos;, &apos;2016-11-25&apos;,
+               &apos;2017-07-24&apos;, &apos;2017-09-18&apos;, &apos;2017-12-15&apos;, &apos;2018-03-16&apos;,
+               &apos;2018-05-09&apos;, &apos;2018-07-18&apos;, &apos;2018-07-25&apos;, &apos;2018-09-20&apos;,
+               &apos;2018-12-04&apos;, &apos;2019-01-03&apos;, &apos;2019-06-14&apos;, &apos;2019-08-13&apos;,
+               &apos;2020-01-02&apos;],
+              dtype=&apos;datetime64[ns]&apos;, name=&apos;date&apos;, freq=None)</code></pre><figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#基于金叉和死叉买卖股票计算收益</span></span><br><span class="line">first_money = <span class="hljs-number">100000</span></span><br><span class="line">money = first_money</span><br><span class="line">hold = <span class="hljs-number">0</span> <span class="hljs-comment">#持有股票的数量（股）</span></span><br><span class="line"></span><br><span class="line">s1 = Series(<span class="hljs-number">1</span>,index=golden_dates)<span class="hljs-comment">#1标识金叉日期</span></span><br><span class="line">s2 = Series(<span class="hljs-number">0</span>,index=death_dates)<span class="hljs-comment">#0表示死叉日期</span></span><br><span class="line">s = s1.append(s2) <span class="hljs-comment">#存储的是所有的金叉和死叉日期</span></span><br><span class="line">s = s.sort_index() <span class="hljs-comment">#根据索引排序</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> s.index:</span><br><span class="line">    <span class="hljs-comment">#开盘价作为买卖的单价</span></span><br><span class="line">    price = df.loc[i][<span class="hljs-string">'open'</span>]</span><br><span class="line">    <span class="hljs-keyword">if</span> s[i] == <span class="hljs-number">1</span>:<span class="hljs-comment">#金叉：买入</span></span><br><span class="line">        hand_cost = <span class="hljs-number">100</span> * price<span class="hljs-comment">#1手股票花费的钱数</span></span><br><span class="line">        hand_count = money // hand_cost <span class="hljs-comment">#最多买入了多少手股票</span></span><br><span class="line">        hold = hand_count * <span class="hljs-number">100</span> <span class="hljs-comment">#买入的多少只股票</span></span><br><span class="line">        money -= hold*price</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        money += hold * price</span><br><span class="line">        hold = <span class="hljs-number">0</span></span><br><span class="line">        </span><br><span class="line"><span class="hljs-comment">#如果最后一天为金叉，最后一天买入股票，没有卖出。剩余的股票也要计算到总收益中</span></span><br><span class="line">last_money = hold * df[<span class="hljs-string">'open'</span>][<span class="hljs-number">-1</span>]</span><br><span class="line">print(money + last_money - first_money)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1501254.9999999995</code></pre>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Django/" rel="tag">Django</a>, <a class="has-link-grey -link" href="/tags/Python/" rel="tag">Python</a>
+                    <a class="has-link-grey -link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a>
                 </div>
             </div>
         </div>
@@ -196,13 +641,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/04/hello-world/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hello World</span>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/10/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-pandas%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
+                <span class="level-item">pandas基础</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -543,7 +988,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/img/myLOGO.png" alt="django模版与过滤器" height="28">
+                    <img src="/img/myLOGO.png" alt="双均线策略" height="28">
                 
                 </a>
                 <p class="is-size-7">
